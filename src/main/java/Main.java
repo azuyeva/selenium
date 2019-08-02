@@ -21,7 +21,7 @@ public class Main {
 
         WebDriver driver = null;
         try {
-            System.setProperty("webdriver.chrome.driver", Main.class.getResource("chromedriver.exe").getPath());
+            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
             driver = new ChromeDriver();
             driver.get("http://" + searchEngine);
             driver.manage().window().maximize();
@@ -33,6 +33,11 @@ public class Main {
             final String resultOutput = results.getText();
             System.out.println("Results: " + resultOutput);
             List<WebElement> links = driver.findElements(By.xpath("//div[@id='rso']//div[@class='r']/a[1]"));
+
+            if (number > links.size()) {
+                number = links.size();
+                System.out.println("Maximal " + links.size() + " Ergebnisse auf der Seite. Die nächste Seiten werden noch nicht unterstützt");
+            }
 
             for (int i = 0; i < number; i++) {
                 System.out.println(links.get(i).getAttribute("href"));
