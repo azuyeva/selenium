@@ -28,9 +28,11 @@ distributions {
         contents {
             from {
                 fileTree(dir: 'src/main/resources', include:
-                        [
-                                'chromedriver.exe'
-                        ], excludes: [])
+                         [ 'chromedriver.exe'], excludes: []
+                )
+                fileTree(dir: '.', include:
+                        [ 'README.md'], excludes: []
+                )
             }
             from {
                 jar
