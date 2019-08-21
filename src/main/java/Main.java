@@ -33,9 +33,7 @@ public class Main {
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            if (searchPage.webDriver != null) {
-                searchPage.close();
-            }
+            searchPage.close();
         }
     }
 }
