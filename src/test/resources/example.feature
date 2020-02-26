@@ -3,7 +3,7 @@
 Funktionalität: Suchanfrage in der Suchmaschine
   Die Städte in Google suchen
 
- Szenariogrundriss: Suche "Frankfut am Main" in Chrome auf Google
+ Szenariogrundriss: Suche "<Suchanfrage>" in <Browser> auf <Suchmaschine>
 
     Angenommen Ich verwende "<Browser>" Browser
     Angenommen Die Suchmaschine ist "<Suchmaschine>"
