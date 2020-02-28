@@ -5,6 +5,7 @@ import io.cucumber.java.de.Angenommen;
 import io.cucumber.java.de.Dann;
 import io.cucumber.java.de.Wenn;
 import io.cucumber.junit.Cucumber;
+import org.junit.AfterClass;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -50,7 +51,7 @@ public class CucumberStepsSelenium {
         }
     }
 
-    @After
+    @After("@Selenium")
     public void closeBrowser() {
         searchPage.close();
     }

@@ -1,5 +1,6 @@
 # language: de
 
+  @Selenium
 Funktionalität: Suchanfrage in der Suchmaschine
   Die Städte in Google suchen
 
