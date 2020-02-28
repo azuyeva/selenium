@@ -9,6 +9,7 @@ import org.junit.AfterClass;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 @RunWith(Cucumber.class)
 public class CucumberStepsSelenium {
@@ -20,8 +21,11 @@ public class CucumberStepsSelenium {
     public void ichVerwendeBrowser(String browser) throws Exception {
 
         if (browser.contains("Chrome")) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver");
+            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
             this.driver = new ChromeDriver();
+        } else if (browser.contains("Firefox")) {
+            System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
+            this.driver = new FirefoxDriver();
         } else {
             throw new Exception("Browser " + browser + " wird noch nicht unterstützt!");
         }
@@ -32,7 +36,6 @@ public class CucumberStepsSelenium {
 
         if (searchEngine.contains("Google")) {
             searchPage = new GoogleSearchPage("http://google.de", driver);
-
         } else {
             throw new Exception("Suchmaschine " + searchEngine + " wird noch nicht unterstützt!");
         }
@@ -53,6 +56,9 @@ public class CucumberStepsSelenium {
 
     @After("@Selenium")
     public void closeBrowser() {
-        searchPage.close();
+        if (driver != null) {
+            driver.quit();
+        }
+       // searchPage.close();
     }
 }

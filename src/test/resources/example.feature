@@ -13,4 +13,5 @@ Funktionalität: Suchanfrage in der Suchmaschine
 
    Beispiele: Testfallliste
    | Suchanfrage           | Browser |  Suchmaschine |
-   | Frankfut am Main      | Chrome  |  Google       |
+   | Frankfurt am Main      | Chrome  |  Google       |
+   | Frankfurt am Main      | Firefox  |  Google       |
