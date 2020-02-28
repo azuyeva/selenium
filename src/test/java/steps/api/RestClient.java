@@ -1,9 +1,12 @@
 package steps.api;
 
 import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 
 import java.io.IOException;
@@ -16,13 +19,17 @@ public class RestClient {
         this.url = url;
     }
 
-    public HttpEntity sendGetRequest(String route) throws IOException {
+    public HttpResponse sendGetRequest(String route) throws IOException {
 
         HttpUriRequest request = new HttpGet( url + route);
-        CloseableHttpResponse httpResponse = HttpClientBuilder.create().build().execute( request );
-        return httpResponse.getEntity();
-        //String result = IOUtils.toString(httpResponse.getEntity().getContent(), StandardCharsets.UTF_8);
-        //System.out.println(result);
+        return HttpClientBuilder.create().build().execute( request );
     }
 
+    public HttpResponse sendPostRequest(String route, String bodyJson) throws IOException {
+
+        HttpPost request = new HttpPost(url + route);
+        request.setHeader("Content-type", "application/json; charset=UTF-8");
+        request.setEntity(new StringEntity(bodyJson));
+        return HttpClientBuilder.create().build().execute(request);
+    }
 }

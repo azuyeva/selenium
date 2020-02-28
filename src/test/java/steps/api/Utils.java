@@ -17,7 +17,13 @@ public class Utils {
         return gson.fromJson(json, clazz);
     }
 
-    public static String httpEntityToString(HttpEntity response) throws IOException {
+    public static String objectToJson(Object object) {
+
+        Gson gson = new Gson();
+        return gson.toJson(object);
+    }
+
+    public static String httpEntityContentToString(HttpEntity response) throws IOException {
         return IOUtils.toString(response.getContent(), StandardCharsets.UTF_8);
     }
 }
