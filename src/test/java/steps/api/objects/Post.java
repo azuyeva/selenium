@@ -1,8 +1,6 @@
 package steps.api.objects;
 
 
-import com.google.gson.annotations.Expose;
-
 public class Post {
 
     public Integer userId;
